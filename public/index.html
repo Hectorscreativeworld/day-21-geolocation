@@ -79,6 +79,17 @@
 
     /*Compass: https://thenounproject.com/search/?q=compass&i=592352*/
   </style>
+  const arrow = document.querySelector('.arrow');
+  const speed = document.querySelector('.speed-value');
+
+  navigator.geolocation.watchPosition((data) => {
+  console.log(data);
+  speed.textContent = data.coords.speeds;
+  arrow.style.transform = `rotate(${data.coords.heading}deg)`;
+  }, (err) => {
+  console.log(err);
+  alert('Hey! YOU GOTTA ALLOW THAT TO HAPPEN!!!')
+  });
   <script>
   </script>
 </body>
